@@ -1,0 +1,16 @@
+diff --git a/bonobo/bonobo-ui-util.c b/bonobo/bonobo-ui-util.c
+index 99b56a4..bba0f02 100644
+--- a/bonobo/bonobo-ui-util.c
++++ b/bonobo/bonobo-ui-util.c
+@@ -1251,6 +1251,10 @@ bonobo_ui_util_accel_parse (const char        *accelerator,
+ 				gchar last_ch;
+ 	      
+ 				last_ch = *accelerator;
++				if (!last_ch || last_ch == DELIM_POST) {
++					g_warning ("Unknown accelerator - '%s'", accelerator);
++					return;
++				}
+ 				while (last_ch && last_ch != DELIM_POST)
+ 				{
+ 					last_ch = *accelerator;
+
